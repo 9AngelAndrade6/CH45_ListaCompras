@@ -111,6 +111,8 @@ btnAgregar.addEventListener("click", function (event) {
 
 
 }); // btnAgregar.addEventListener
+
+
 btnClear.addEventListener("click", function (event) {
     event.preventDefault();
 
@@ -153,7 +155,7 @@ btnClear.addEventListener("click", function (event) {
 
     //Mandar el foco a nombre
     txtNombre.focus();
-});
+});//btnClear.addEventListener
 
 
 // evento blur es cuando un campo pierde el foco, se sale del campo 
@@ -171,8 +173,8 @@ txtNumber.addEventListener("blur", function (event) {
 
 
 window.addEventListener("load", function () {
-    if (this.localStorage.getItem("contador") != null) {
-        contador = Number(this.localStorage.getItem("contador"));
+    if (localStorage.getItem("contador") != null) {
+        contador = Number(localStorage.getItem("contador"));
     }//!null
 
     if (localStorage.getItem("totalEnProductos") != null) {
@@ -190,8 +192,8 @@ window.addEventListener("load", function () {
     precioTotal.innerText = "$ " + costoTotal.toFixed(2);
 
 
-    if (this.localStorage.getItem("datos") != null) {
-        datos = JSON.parse(this.localStorage.getItem("datos"))
+    if (localStorage.getItem("datos") != null) {
+        datos = JSON.parse(localStorage.getItem("datos"))
     }//!=null
     datos.forEach(r => {
         let row = `<tr>
@@ -202,5 +204,7 @@ window.addEventListener("load", function () {
         </tr>`;
         cuerpoTabla.insertAdjacentHTML("beforeend", row)
     })
+    let now= new Date();
+    fecha.innerText=(now.getMonth()+1) + "/" + now.getFullYear();
 
 }) //windows load
